@@ -2,6 +2,7 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "target": "ES2017",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "module": "esnext", // add this line
   },
 }

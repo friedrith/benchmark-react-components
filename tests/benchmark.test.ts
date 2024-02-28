@@ -9,11 +9,19 @@ test.describe('Benchmark', () => {
     versions.forEach(version => {
       test(`Get performance metrics ${version} ${index}`, async ({ page }) => {
         const session = await page.context().newCDPSession(page)
+        await page.goto(`/?component=${version}`)
 
         await session.send('Performance.enable')
 
-        await page.goto('/')
+        await page.screenshot({ path: 'screenshot.png' })
+
+        await page.getByTestId(`start`).isVisible()
+        await page.getByTestId('start').click()
+
         await page.getByTestId(`component-${data.length - 1}`).isVisible()
+
+        await page.getByTestId('rerender').click()
+        await page.getByTestId(`component-${data.length}`).isVisible()
 
         const performanceMetrics = await session.send('Performance.getMetrics')
 

@@ -29,16 +29,16 @@ export const addMetrics = (
   const extractedMetrics = extractMetrics(metrics, metricsToExtract)
 
   versionedMetrics[version] = {
-    count: versionedMetrics[version]?.count ?? 0 + 1,
+    count: (versionedMetrics[version]?.count ?? 0) + 1,
     ProcessTime:
-      versionedMetrics[version]?.ProcessTime ??
-      0 + extractedMetrics.ProcessTime,
+      (versionedMetrics[version]?.ProcessTime ?? 0) +
+      extractedMetrics.ProcessTime,
     JSHeapUsedSize:
-      versionedMetrics[version]?.JSHeapUsedSize ??
-      0 + extractedMetrics.JSHeapUsedSize,
+      (versionedMetrics[version]?.JSHeapUsedSize ?? 0) +
+      extractedMetrics.JSHeapUsedSize,
     JSHeapTotalSize:
-      versionedMetrics[version]?.JSHeapTotalSize ??
-      0 + extractedMetrics.JSHeapTotalSize,
+      (versionedMetrics[version]?.JSHeapTotalSize ?? 0) +
+      extractedMetrics.JSHeapTotalSize,
   }
 }
 
