@@ -3,5 +3,9 @@ export interface ComponentProps {
 }
 
 export default function ComponentA({ value }: ComponentProps) {
-  return <div className='container'>{value}</div>
+  return (
+    <div className='container' data-testid={`component-${value}`}>
+      {value}
+    </div>
+  )
 }
